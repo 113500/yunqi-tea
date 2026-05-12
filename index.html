@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云栖茶语 - 新中式茶饮品牌 | YUN QI CHA YU</title>
+    <meta name="description" content="云栖茶语，新中式茶饮品牌。以茶为媒，栖心于云。传承东方茶道美学，演绎现代生活雅趣。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #5B7C6F;
+            --color-primary-dark: #4A6359;
+            --color-secondary: #8BA888;
+            --color-accent: #C9A962;
+            --color-accent-light: #D4BC7A;
+            --color-cream: #F8F5F0;
+            --color-dark: #2C3E35;
+            --color-light: #E8E4DE;
+            --color-white: #FFFFFF;
+            --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+            --font-sans: 'Noto Sans SC', 'PingFang SC', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(44, 62, 53, 0.08);
+            --shadow-md: 0 8px 24px rgba(44, 62, 53, 0.12);
+            --shadow-lg: 0 16px 48px rgba(44, 62, 53, 0.16);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-cream);
+            color: var(--color-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-dark);
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 245, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            border-bottom: 1px solid rgba(232, 228, 222, 0.5);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            height: 64px;
+            background: rgba(248, 245, 240, 0.98);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.75rem 1.75rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-light) 50%, var(--color-cream) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(139, 168, 136, 0.15) 0%, transparent 70%);
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 50%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+            animation: float 30s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-3deg); }
+        }
+
+        .hero-decoration {
+            position: absolute;
+            font-family: var(--font-serif);
+            font-size: 20rem;
+            color: rgba(91, 124, 111, 0.03);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-decoration.left {
+            top: 10%;
+            left: 5%;
+        }
+
+        .hero-decoration.right {
+            bottom: 10%;
+            right: 5%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 2.5rem;
+            background: rgba(91, 124, 111, 0.05);
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 6rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.2em;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-desc {
+            max-width: 550px;
+            margin: 0 auto 3.5rem;
+            color: var(--color-dark);
+            opacity: 0.75;
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 3rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.1rem 3rem;
+            background: transparent;
+            color: var(--color-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            transition: var(--transition);
+            border: 1px solid var(--color-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 1.2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            letter-spacing: 0.4em;
+            margin-bottom: 1.2rem;
+            display: block;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-dark);
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-white);
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image::before {
+            content: '茶';
+            font-family: var(--font-serif);
+            font-size: 18rem;
+            color: rgba(255, 255, 255, 0.08);
+            position: absolute;
+        }
+
+        .about-image-inner {
+            width: 85%;
+            height: 85%;
+            background: var(--color-cream);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            color: var(--color-primary);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image-inner .main-text {
+            font-size: 3.5rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-image-inner .sub-text {
+            font-size: 1rem;
+            letter-spacing: 0.5em;
+            opacity: 0.6;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-dark);
+            letter-spacing: 0.1em;
+        }
+
+        .about-text p {
+            margin-bottom: 1.8rem;
+            color: var(--color-dark);
+            opacity: 0.8;
+            font-size: 1.05rem;
+            line-height: 2;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: var(--color-cream);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background: var(--color-light);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Products Section */
+        .products {
+            background: var(--color-cream);
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--color-light) 0%, var(--color-cream) 100%);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .product-card:hover .product-image::after {
+            transform: translateX(100%);
+        }
+
+        .product-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+            letter-spacing: 0.1em;
+        }
+
+        .product-card .product-desc {
+            font-size: 0.95rem;
+            color: var(--color-dark);
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+
+        .product-card .price {
+            color: var(--color-accent);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Brand Identity Section */
+        .brand {
+            background: var(--color-dark);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand::before {
+            content: 'VI';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            font-size: 30rem;
+            color: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+        }
+
+        .brand .section-title {
+            color: var(--color-white);
+        }
+
+        .brand .section-tag {
+            color: var(--color-accent);
+        }
+
+        .brand .section-desc {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .brand-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .brand-item:hover {
+            border-color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-8px);
+        }
+
+        .brand-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .brand-item:hover .brand-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .brand-item h4 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+        }
+
+        .brand-item p {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            line-height: 1.8;
+        }
+
+        /* Store Section */
+        .store {
+            background: var(--color-white);
+        }
+
+        .store-showcase {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .store-main {
+            height: 550px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        .store-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .store-main-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .store-main-content h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+        }
+
+        .store-main-content p {
+            font-size: 1rem;
+            opacity: 0.8;
+            letter-spacing: 0.2em;
+        }
+
+        .store-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .store-card {
+            background: var(--color-cream);
+            padding: 2rem;
+            flex: 1;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .store-card:hover {
+            border-left-color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        .store-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+            letter-spacing: 0.1em;
+        }
+
+        .store-card p {
+            font-size: 0.95rem;
+            color: var(--color-dark);
+            opacity: 0.7;
+            line-height: 1.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
+            color: var(--color-white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+        }
+
+        .contact .section-title {
+            color: var(--color-white);
+        }
+
+        .contact .section-tag {
+            color: var(--color-accent);
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-content > p {
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h5 {
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            opacity: 0.6;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 3rem 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            letter-spacing: 0.15em;
+            color: var(--color-white);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            opacity: 0.6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            section {
+                padding: 6rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .brand-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .store-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">云</div>
+            云栖茶语
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">品牌故事</a></li>
+            <li><a href="#products">茶饮系列</a></li>
+            <li><a href="#brand">品牌视觉</a></li>
+            <li><a href="#store">门店空间</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">预约品茶</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-decoration left">茶</div>
+        <div class="hero-decoration right">栖</div>
+        <div class="hero-content">
+            <span class="hero-badge">新中式茶饮品牌</span>
+            <h1>云栖茶语</h1>
+            <p class="hero-subtitle">YUN QI CHA YU</p>
+            <p class="hero-desc">以茶为媒，栖心于云。传承东方茶道美学，演绎现代生活雅趣。在繁忙都市中，寻得一方净土，品味一杯好茶。</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn-primary">探索茶饮 →</a>
+                <a href="#about" class="btn-secondary">了解更多</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">SCROLL</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <span class="section-tag">BRAND STORY</span>
+            <h2 class="section-title">品牌故事</h2>
+            <p class="section-desc">一杯好茶，是味蕾的享受，更是心灵的栖息</p>
+        </div>
+        <div class="about-content">
+            <div class="about-image fade-in-left">
+                <div class="about-image-inner">
+                    <div class="main-text">云栖茶语</div>
+                    <div class="sub-text">YUN QI CHA YU</div>
+                </div>
+            </div>
+            <div class="about-text fade-in-right">
+                <h3>以茶为媒，栖心于云</h3>
+                <p>云栖茶语，诞生于对传统茶文化的深情致敬。我们相信，一杯好茶不仅是味蕾的享受，更是心灵的栖息之地。</p>
+                <p>品牌以"云栖"为名，寓意在繁忙都市中寻得一方净土；以"茶语"为魂，诉说东方美学的当代演绎。每一杯茶，都是一次与自然的对话，一场与内心的相遇。</p>
+                <p>我们精选来自中国各大茶区的优质原叶，坚持零添加配方，以匠心手作的方式，为都市人呈现一杯真正的好茶。</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">叶</div>
+                        <span>原叶现泡</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">纯</div>
+                        <span>零添加配方</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">境</div>
+                        <span>东方美学空间</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">心</div>
+                        <span>匠心手作</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="section-header">
+            <span class="section-tag">TEA COLLECTION</span>
+            <h2 class="section-title">茶饮系列</h2>
+            <p class="section-desc">精选中国名茶，匠心手作每一杯</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card fade-in">
+                <div class="product-tag">招牌</div>
+                <div class="product-image">云雾</div>
+                <h4>云雾龙井</h4>
+                <p class="product-desc">西湖龙井 · 清香淡雅</p>
+                <span class="price">¥28</span>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-tag">推荐</div>
+                <div class="product-image">栖心</div>
+                <h4>栖心白茶</h4>
+                <p class="product-desc">福鼎白茶 · 甘甜醇厚</p>
+                <span class="price">¥32</span>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">茶语</div>
+                <h4>茶语乌龙</h4>
+                <p class="product-desc">安溪铁观音 · 兰香馥郁</p>
+                <span class="price">¥26</span>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">山岚</div>
+                <h4>山岚茉莉</h4>
+                <p class="product-desc">茉莉花茶 · 清新怡人</p>
+                <span class="price">¥24</span>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">竹影</div>
+                <h4>竹影绿茶</h4>
+                <p class="product-desc">碧螺春 · 鲜爽回甘</p>
+                <span class="price">¥28</span>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-tag">新品</div>
+                <div class="product-image">暮云</div>
+                <h4>暮云红茶</h4>
+                <p class="product-desc">正山小种 · 蜜香悠长</p>
+                <span class="price">¥30</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Identity Section -->
+    <section id="brand" class="brand">
+        <div class="section-header">
+            <span class="section-tag">VISUAL IDENTITY</span>
+            <h2 class="section-title">品牌视觉</h2>
+            <p class="section-desc">东方美学与现代设计的完美融合</p>
+        </div>
+        <div class="brand-grid">
+            <div class="brand-item fade-in">
+                <div class="brand-icon">标</div>
+                <h4>品牌标志</h4>
+                <p>融合山水意象<br>简约现代设计<br>传递品牌精神</p>
+            </div>
+            <div class="brand-item fade-in">
+                <div class="brand-icon">色</div>
+                <h4>标准色彩</h4>
+                <p>茶青 · 米白 · 原木<br>点缀金色雅韵<br>营造东方意境</p>
+            </div>
+            <div class="brand-item fade-in">
+                <div class="brand-icon">字</div>
+                <h4>标准字体</h4>
+                <p>宋体为骨<br>现代演绎<br>东方美学</p>
+            </div>
+            <div class="brand-item fade-in">
+                <div class="brand-icon">纹</div>
+                <h4>辅助图形</h4>
+                <p>茶叶形态演化<br>传统纹样新生<br>品牌视觉延伸</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="store">
+        <div class="section-header">
+            <span class="section-tag">SPACE DESIGN</span>
+            <h2 class="section-title">门店空间</h2>
+            <p class="section-desc">都市中的茶意栖所</p>
+        </div>
+        <div class="store-showcase">
+            <div class="store-main fade-in-left">
+                <div class="store-main-content">
+                    <h3>空间设计</h3>
+                    <p>SPACE DESIGN</p>
+                </div>
+            </div>
+            <div class="store-info">
+                <div class="store-card fade-in-right">
+                    <h4>设计理念</h4>
+                    <p>以"云栖"为空间叙事主线，营造都市中的茶意栖所。原木、竹编、石材等自然材质，构建温润雅致的空间氛围，让每一位顾客都能在此找到内心的宁静。</p>
+                </div>
+                <div class="store-card fade-in-right">
+                    <h4>功能分区</h4>
+                    <p>品茗区 · 展示区 · 手作区 · 休憩区，动静分区，流线自然，满足多元体验需求。每个区域都经过精心设计，为顾客提供最佳的茶饮体验。</p>
+                </div>
+                <div class="store-card fade-in-right">
+                    <h4>视觉亮点</h4>
+                    <p>悬空茶艺装置、竹编艺术墙、水景茶台，打造沉浸式东方美学体验。光影与空间的交织，营造出独特的品茶氛围。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <span class="section-tag">CONTACT US</span>
+            <h2 class="section-title">联系我们</h2>
+        </div>
+        <div class="contact-content">
+            <p>期待与您相遇，共品一盏茶香</p>
+            <a href="#" class="btn-primary">预约品茶 →</a>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h5>地址</h5>
+                    <p>杭州市西湖区云栖小镇</p>
+                </div>
+                <div class="contact-item">
+                    <h5>电话</h5>
+                    <p>0571-8888 8888</p>
+                </div>
+                <div class="contact-item">
+                    <h5>营业时间</h5>
+                    <p>10:00 - 22:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">云栖茶语</div>
+            <p class="footer-text">© 2026 云栖茶语 YUN QI CHA YU · 新中式茶饮品牌 · 毕业设计作品</p>
+            <div class="footer-links">
+                <a href="#about">品牌故事</a>
+                <a href="#products">茶饮系列</a>
+                <a href="#contact">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero decorations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const decorations = document.querySelectorAll('.hero-decoration');
+            decorations.forEach((dec, index) => {
+                const speed = index === 0 ? 0.3 : 0.2;
+                dec.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
