@@ -885,6 +885,398 @@
             padding: 3rem 4rem;
         }
 
+        /* Tea Recommendation Quiz */
+        .recommend {
+            background: var(--color-white);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: var(--color-cream);
+            border-radius: 8px;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-step h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-dark);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .quiz-option {
+            padding: 2rem;
+            background: var(--color-white);
+            border: 2px solid var(--color-light);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--color-accent);
+            background: rgba(201, 169, 98, 0.1);
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+        }
+
+        .option-text {
+            font-size: 1rem;
+            color: var(--color-dark);
+        }
+
+        .quiz-result {
+            text-align: center;
+        }
+
+        .result-card {
+            padding: 2rem;
+        }
+
+        .result-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-desc {
+            color: var(--color-dark);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .result-price {
+            color: var(--color-accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-progress {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--color-light);
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-accent);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: var(--color-dark);
+            opacity: 0.6;
+        }
+
+        /* Reservation Form */
+        .reservation {
+            background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-light) 100%);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: var(--color-white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .reservation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid var(--color-light);
+            background: var(--color-cream);
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: var(--color-white);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .form-success {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-primary);
+            color: white;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+
+        .form-success h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .form-success p {
+            color: var(--color-dark);
+            opacity: 0.7;
+        }
+
+        .success-detail {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--color-cream);
+            border-radius: 4px;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: var(--color-accent);
+            width: 0;
+            transition: width 0.1s ease;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top:hover {
+            background: var(--color-dark);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        /* Product Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 62, 53, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: var(--color-dark);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--color-primary);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+        }
+
+        .modal-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .modal-desc {
+            color: var(--color-dark);
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .modal-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: var(--color-primary);
+            min-width: 60px;
+        }
+
+        .detail-value {
+            color: var(--color-dark);
+            opacity: 0.8;
+        }
+
+        .modal-price {
+            font-size: 1.8rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .modal-btn {
+            align-self: start;
+        }
+
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -1045,11 +1437,12 @@
         <ul class="nav-links">
             <li><a href="#about">品牌故事</a></li>
             <li><a href="#products">茶饮系列</a></li>
+            <li><a href="#recommend">茶饮推荐</a></li>
             <li><a href="#brand">品牌视觉</a></li>
             <li><a href="#store">门店空间</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
-        <a href="#contact" class="nav-cta">预约品茶</a>
+        <a href="#reservation" class="nav-cta">预约品茶</a>
     </nav>
 
     <!-- Hero Section -->
@@ -1253,6 +1646,196 @@
         </div>
     </section>
 
+    <!-- Tea Recommendation Section -->
+    <section id="recommend" class="recommend">
+        <div class="section-header">
+            <span class="section-tag">TEA QUIZ</span>
+            <h2 class="section-title">寻找你的专属茶饮</h2>
+            <p class="section-desc">回答几个问题，我们为你推荐最适合的茶</p>
+        </div>
+        <div class="quiz-container fade-in">
+            <div class="quiz-step active" data-step="1">
+                <h3>你喜欢什么样的口感？</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" data-value="light">
+                        <span class="option-icon">🍃</span>
+                        <span class="option-text">清淡清香</span>
+                    </button>
+                    <button class="quiz-option" data-value="rich">
+                        <span class="option-icon">🌿</span>
+                        <span class="option-text">醇厚浓郁</span>
+                    </button>
+                    <button class="quiz-option" data-value="sweet">
+                        <span class="option-icon">🌸</span>
+                        <span class="option-text">甘甜花香</span>
+                    </button>
+                    <button class="quiz-option" data-value="fresh">
+                        <span class="option-icon">✨</span>
+                        <span class="option-text">鲜爽回甘</span>
+                    </button>
+                </div>
+            </div>
+            <div class="quiz-step" data-step="2">
+                <h3>你喝茶的主要场景？</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" data-value="work">
+                        <span class="option-icon">💼</span>
+                        <span class="option-text">工作提神</span>
+                    </button>
+                    <button class="quiz-option" data-value="relax">
+                        <span class="option-icon">🧘</span>
+                        <span class="option-text">放松休憩</span>
+                    </button>
+                    <button class="quiz-option" data-value="social">
+                        <span class="option-icon">👥</span>
+                        <span class="option-text">社交聚会</span>
+                    </button>
+                    <button class="quiz-option" data-value="gift">
+                        <span class="option-icon">🎁</span>
+                        <span class="option-text">送礼佳品</span>
+                    </button>
+                </div>
+            </div>
+            <div class="quiz-step" data-step="3">
+                <h3>你对茶的了解程度？</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" data-value="beginner">
+                        <span class="option-icon">🌱</span>
+                        <span class="option-text">入门新手</span>
+                    </button>
+                    <button class="quiz-option" data-value="intermediate">
+                        <span class="option-icon">📖</span>
+                        <span class="option-text">有所了解</span>
+                    </button>
+                    <button class="quiz-option" data-value="expert">
+                        <span class="option-icon">🏆</span>
+                        <span class="option-text">资深茶友</span>
+                    </button>
+                </div>
+            </div>
+            <div class="quiz-result" style="display: none;">
+                <div class="result-card">
+                    <img src="" alt="推荐茶饮" class="result-image">
+                    <h3 class="result-title"></h3>
+                    <p class="result-desc"></p>
+                    <p class="result-price"></p>
+                    <button class="btn-primary restart-quiz">重新测试</button>
+                </div>
+            </div>
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 33.33%"></div>
+                </div>
+                <span class="progress-text">问题 1 / 3</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Form Section -->
+    <section id="reservation" class="reservation">
+        <div class="section-header">
+            <span class="section-tag">RESERVATION</span>
+            <h2 class="section-title">预约品茶</h2>
+            <p class="section-desc">填写信息，我们将为您安排专属品茶体验</p>
+        </div>
+        <div class="form-container fade-in">
+            <form id="reservationForm" class="reservation-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="tel" id="phone" name="phone" placeholder="请输入联系电话" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">预约日期</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">预约时间</label>
+                        <select id="time" name="time" required>
+                            <option value="">请选择时间</option>
+                            <option value="10:00">10:00 - 11:00</option>
+                            <option value="11:00">11:00 - 12:00</option>
+                            <option value="14:00">14:00 - 15:00</option>
+                            <option value="15:00">15:00 - 16:00</option>
+                            <option value="16:00">16:00 - 17:00</option>
+                            <option value="17:00">17:00 - 18:00</option>
+                            <option value="18:00">18:00 - 19:00</option>
+                            <option value="19:00">19:00 - 20:00</option>
+                            <option value="20:00">20:00 - 21:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="tea">感兴趣的茶饮</label>
+                    <select id="tea" name="tea">
+                        <option value="">请选择茶饮（可选）</option>
+                        <option value="云雾龙井">云雾龙井</option>
+                        <option value="栖心白茶">栖心白茶</option>
+                        <option value="茶语乌龙">茶语乌龙</option>
+                        <option value="山岚茉莉">山岚茉莉</option>
+                        <option value="竹影绿茶">竹影绿茶</option>
+                        <option value="暮云红茶">暮云红茶</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label for="message">备注信息</label>
+                    <textarea id="message" name="message" placeholder="如有特殊需求，请在此说明..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-primary submit-btn">提交预约</button>
+            </form>
+            <div class="form-success" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3>预约成功！</h3>
+                <p>我们已收到您的预约信息，将尽快与您联系确认。</p>
+                <p class="success-detail"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <span>↑</span>
+    </button>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <img src="" alt="" class="modal-image">
+            <div class="modal-info">
+                <h2 class="modal-title"></h2>
+                <p class="modal-desc"></p>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <span class="detail-label">产地</span>
+                        <span class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">特点</span>
+                        <span class="detail-value"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">冲泡</span>
+                        <span class="detail-value"></span>
+                    </div>
+                </div>
+                <p class="modal-price"></p>
+                <button class="btn-primary modal-btn">预约品鉴</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1322,6 +1905,168 @@
                 dec.style.transform = `translateY(${scrolled * speed}px)`;
             });
         });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress-bar');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Tea Recommendation Quiz
+        const quizData = {
+            currentStep: 1,
+            answers: {},
+            teas: [
+                { name: '云雾龙井', image: 'images/tea1.png', desc: '西湖龙井 · 清香淡雅', price: '¥28', taste: 'light', scene: 'work', level: 'beginner' },
+                { name: '栖心白茶', image: 'images/tea2.png', desc: '福鼎白茶 · 甘甜醇厚', price: '¥32', taste: 'sweet', scene: 'relax', level: 'intermediate' },
+                { name: '茶语乌龙', image: 'images/tea3.png', desc: '安溪铁观音 · 兰香馥郁', price: '¥26', taste: 'rich', scene: 'social', level: 'intermediate' },
+                { name: '山岚茉莉', image: 'images/tea4.png', desc: '茉莉花茶 · 清新怡人', price: '¥24', taste: 'sweet', scene: 'social', level: 'beginner' },
+                { name: '竹影绿茶', image: 'images/tea5.png', desc: '碧螺春 · 鲜爽回甘', price: '¥28', taste: 'fresh', scene: 'work', level: 'beginner' },
+                { name: '暮云红茶', image: 'images/tea6.png', desc: '正山小种 · 蜜香悠长', price: '¥30', taste: 'rich', scene: 'relax', level: 'intermediate' }
+            ]
+        };
+
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const step = this.closest('.quiz-step');
+                const value = this.dataset.value;
+                quizData.answers[`step${quizData.currentStep}`] = value;
+
+                // Mark selected
+                step.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+
+                // Move to next step or show result
+                setTimeout(() => {
+                    if (quizData.currentStep < 3) {
+                        quizData.currentStep++;
+                        document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+                        document.querySelector(`.quiz-step[data-step="${quizData.currentStep}"]`).classList.add('active');
+                        document.querySelector('.progress-fill').style.width = (quizData.currentStep / 3 * 100) + '%';
+                        document.querySelector('.progress-text').textContent = `问题 ${quizData.currentStep} / 3`;
+                    } else {
+                        showQuizResult();
+                    }
+                }, 300);
+            });
+        });
+
+        function showQuizResult() {
+            document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+            document.querySelector('.quiz-progress').style.display = 'none';
+            document.querySelector('.quiz-result').style.display = 'block';
+
+            // Find best match
+            const taste = quizData.answers.step1;
+            const scene = quizData.answers.step2;
+            const level = quizData.answers.step3;
+
+            let bestMatch = quizData.teas.find(t => t.taste === taste && t.scene === scene) ||
+                           quizData.teas.find(t => t.taste === taste) ||
+                           quizData.teas[0];
+
+            document.querySelector('.result-image').src = bestMatch.image;
+            document.querySelector('.result-title').textContent = bestMatch.name;
+            document.querySelector('.result-desc').textContent = bestMatch.desc;
+            document.querySelector('.result-price').textContent = bestMatch.price;
+        }
+
+        document.querySelector('.restart-quiz').addEventListener('click', () => {
+            quizData.currentStep = 1;
+            quizData.answers = {};
+            document.querySelectorAll('.quiz-step').forEach(s => {
+                s.style.display = '';
+                s.classList.remove('active');
+            });
+            document.querySelector('.quiz-step[data-step="1"]').classList.add('active');
+            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelector('.quiz-progress').style.display = '';
+            document.querySelector('.progress-fill').style.width = '33.33%';
+            document.querySelector('.progress-text').textContent = '问题 1 / 3';
+            document.querySelector('.quiz-result').style.display = 'none';
+        });
+
+        // Reservation Form
+        const reservationForm = document.getElementById('reservationForm');
+        reservationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const date = formData.get('date');
+            const time = formData.get('time');
+
+            this.style.display = 'none';
+            document.querySelector('.form-success').style.display = 'block';
+            document.querySelector('.success-detail').textContent = `${name}，预约日期：${date}，时间：${time}`;
+        });
+
+        // Product Modal
+        const productDetails = {
+            '云雾龙井': { origin: '浙江杭州', feature: '清香淡雅，回味悠长', brew: '80°C水温，3分钟' },
+            '栖心白茶': { origin: '福建福鼎', feature: '甘甜醇厚，养生佳品', brew: '90°C水温，5分钟' },
+            '茶语乌龙': { origin: '福建安溪', feature: '兰香馥郁，七泡有余香', brew: '95°C水温，3分钟' },
+            '山岚茉莉': { origin: '福建福州', feature: '花香清新，沁人心脾', brew: '85°C水温，3分钟' },
+            '竹影绿茶': { origin: '江苏苏州', feature: '鲜爽回甘，春意盎然', brew: '80°C水温，2分钟' },
+            '暮云红茶': { origin: '福建武夷山', feature: '蜜香悠长，温暖醇厚', brew: '95°C水温，4分钟' }
+        };
+
+        const modal = document.getElementById('productModal');
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                const image = this.querySelector('img').src;
+                const desc = this.querySelector('.product-desc').textContent;
+                const price = this.querySelector('.price').textContent;
+                const details = productDetails[title];
+
+                document.querySelector('.modal-title').textContent = title;
+                document.querySelector('.modal-image').src = image;
+                document.querySelector('.modal-desc').textContent = desc;
+                document.querySelector('.modal-price').textContent = price;
+                document.querySelectorAll('.detail-value')[0].textContent = details.origin;
+                document.querySelectorAll('.detail-value')[1].textContent = details.feature;
+                document.querySelectorAll('.detail-value')[2].textContent = details.brew;
+
+                modal.classList.add('active');
+            });
+        });
+
+        document.querySelector('.modal-close').addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        document.querySelector('.modal-btn').addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.querySelector('#reservation').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Set minimum date for reservation
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        dateInput.value = today;
     </script>
 </body>
 </html>
