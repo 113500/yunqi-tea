@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理 - 云栖茶语</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #5B7C6F;
+            --color-primary-dark: #4A6359;
+            --color-accent: #C9A962;
+            --color-cream: #F8F5F0;
+            --color-dark: #2C3E35;
+            --color-light: #E8E4DE;
+            --color-white: #FFFFFF;
+            --color-success: #27ae60;
+            --color-danger: #e74c3c;
+            --color-warning: #f39c12;
+            --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+            --font-sans: 'Noto Sans SC', 'PingFang SC', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(44, 62, 53, 0.08);
+            --shadow-md: 0 8px 24px rgba(44, 62, 53, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-cream);
+            color: var(--color-dark);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .admin-header {
+            background: var(--color-dark);
+            color: white;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .admin-header .back-btn {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .admin-header .back-btn:hover {
+            background: white;
+            color: var(--color-dark);
+        }
+
+        /* Main Content */
+        .admin-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 3rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card h3 {
+            font-size: 0.85rem;
+            color: var(--color-dark);
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .stat-card.pending .stat-value { color: var(--color-warning); }
+        .stat-card.completed .stat-value { color: var(--color-success); }
+        .stat-card.cancelled .stat-value { color: var(--color-danger); }
+
+        /* Filter */
+        .filter-bar {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-bar label {
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            opacity: 0.7;
+        }
+
+        .filter-bar select {
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--color-light);
+            background: var(--color-cream);
+            font-size: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .filter-bar select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        /* Table */
+        .table-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .reservation-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .reservation-table th,
+        .reservation-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-light);
+        }
+
+        .reservation-table th {
+            background: var(--color-cream);
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--color-dark);
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .reservation-table tr:hover {
+            background: rgba(91, 124, 111, 0.05);
+        }
+
+        .reservation-table tr.completed {
+            background: rgba(39, 174, 96, 0.1);
+        }
+
+        .reservation-table tr.cancelled {
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-badge.pending {
+            background: rgba(243, 156, 18, 0.2);
+            color: var(--color-warning);
+        }
+
+        .status-badge.completed {
+            background: rgba(39, 174, 96, 0.2);
+            color: var(--color-success);
+        }
+
+        .status-badge.cancelled {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--color-danger);
+        }
+
+        /* Action Buttons */
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn.complete {
+            background: var(--color-success);
+            color: white;
+        }
+
+        .action-btn.complete:hover {
+            background: #219a52;
+        }
+
+        .action-btn.cancel {
+            background: var(--color-danger);
+            color: white;
+        }
+
+        .action-btn.cancel:hover {
+            background: #c0392b;
+        }
+
+        .action-btn.delete {
+            background: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        .action-btn.delete:hover {
+            background: var(--color-dark);
+            color: white;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--color-dark);
+            opacity: 0.5;
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .admin-main {
+                padding: 1rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            .reservation-table {
+                min-width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <h1>🍵 云栖茶语 - 后台管理</h1>
+        <a href="index.html" class="back-btn">← 返回前台</a>
+    </header>
+
+    <main class="admin-main">
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <h3>总预约数</h3>
+                <div class="stat-value" id="totalCount">0</div>
+            </div>
+            <div class="stat-card pending">
+                <h3>待处理</h3>
+                <div class="stat-value" id="pendingCount">0</div>
+            </div>
+            <div class="stat-card completed">
+                <h3>已完成</h3>
+                <div class="stat-value" id="completedCount">0</div>
+            </div>
+            <div class="stat-card cancelled">
+                <h3>已取消</h3>
+                <div class="stat-value" id="cancelledCount">0</div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <label>筛选状态：</label>
+            <select id="statusFilter">
+                <option value="all">全部</option>
+                <option value="pending">待处理</option>
+                <option value="completed">已完成</option>
+                <option value="cancelled">已取消</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <table class="reservation-table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>电话</th>
+                        <th>预约日期</th>
+                        <th>预约时间</th>
+                        <th>茶饮</th>
+                        <th>备注</th>
+                        <th>提交时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationList">
+                    <!-- Dynamic content -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        // Load reservations from localStorage
+        function loadReservations() {
+            const data = localStorage.getItem('yunqiReservations');
+            return data ? JSON.parse(data) : [];
+        }
+
+        // Save reservations to localStorage
+        function saveReservations(reservations) {
+            localStorage.setItem('yunqiReservations', JSON.stringify(reservations));
+        }
+
+        // Update stats
+        function updateStats() {
+            const reservations = loadReservations();
+            document.getElementById('totalCount').textContent = reservations.length;
+            document.getElementById('pendingCount').textContent = reservations.filter(r => r.status === 'pending').length;
+            document.getElementById('completedCount').textContent = reservations.filter(r => r.status === 'completed').length;
+            document.getElementById('cancelledCount').textContent = reservations.filter(r => r.status === 'cancelled').length;
+        }
+
+        // Render table
+        function renderTable(filter = 'all') {
+            const reservations = loadReservations();
+            const tbody = document.getElementById('reservationList');
+            
+            let filtered = filter === 'all' ? reservations : reservations.filter(r => r.status === filter);
+            
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10">
+                            <div class="empty-state">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                </svg>
+                                <p>暂无预约记录</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map((r, index) => {
+                const statusText = {
+                    'pending': '待处理',
+                    'completed': '已完成',
+                    'cancelled': '已取消'
+                };
+
+                const statusClass = r.status;
+
+                return `
+                    <tr class="${statusClass}">
+                        <td>${index + 1}</td>
+                        <td>${r.name}</td>
+                        <td>${r.phone}</td>
+                        <td>${r.date}</td>
+                        <td>${r.time}</td>
+                        <td>${r.tea || '-'}</td>
+                        <td>${r.message || '-'}</td>
+                        <td>${r.submitTime}</td>
+                        <td><span class="status-badge ${statusClass}">${statusText[r.status]}</span></td>
+                        <td>
+                            <div class="action-btns">
+                                ${r.status !== 'completed' ? `<button class="action-btn complete" onclick="updateStatus('${r.id}', 'completed')">完成</button>` : ''}
+                                ${r.status !== 'cancelled' ? `<button class="action-btn cancel" onclick="updateStatus('${r.id}', 'cancelled')">取消</button>` : ''}
+                                <button class="action-btn delete" onclick="deleteReservation('${r.id}')">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Update status
+        function updateStatus(id, status) {
+            const reservations = loadReservations();
+            const index = reservations.findIndex(r => r.id === id);
+            if (index !== -1) {
+                reservations[index].status = status;
+                saveReservations(reservations);
+                updateStats();
+                renderTable(document.getElementById('statusFilter').value);
+            }
+        }
+
+        // Delete reservation
+        function deleteReservation(id) {
+            if (confirm('确定要删除这条预约记录吗？')) {
+                const reservations = loadReservations();
+                const filtered = reservations.filter(r => r.id !== id);
+                saveReservations(filtered);
+                updateStats();
+                renderTable(document.getElementById('statusFilter').value);
+            }
+        }
+
+        // Filter change
+        document.getElementById('statusFilter').addEventListener('change', function() {
+            renderTable(this.value);
+        });
+
+        // Initialize
+        updateStats();
+        renderTable();
+    </script>
+</body>
+</html>

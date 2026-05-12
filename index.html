@@ -169,6 +169,109 @@
             transform: translateY(-2px);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .admin-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* Admin Modal */
+        .admin-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 62, 53, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+
+        .admin-modal.active {
+            display: flex;
+        }
+
+        .admin-modal-content {
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .admin-modal-content h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-modal-content input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--color-light);
+            background: var(--color-cream);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .admin-modal-content input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .admin-modal-content .error-msg {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .admin-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .admin-modal-buttons button {
+            padding: 0.8rem 2rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .admin-modal-buttons .cancel-btn {
+            background: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        .admin-modal-buttons .confirm-btn {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .admin-modal-buttons .confirm-btn:hover {
+            background: var(--color-dark);
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -1442,7 +1545,10 @@
             <li><a href="#store">门店空间</a></li>
             <li><a href="#contact">联系我们</a></li>
         </ul>
-        <a href="#reservation" class="nav-cta">预约品茶</a>
+        <div class="nav-right">
+            <button class="admin-btn" id="adminBtn">管理员</button>
+            <a href="#reservation" class="nav-cta">预约品茶</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -1808,6 +1914,19 @@
         <span>↑</span>
     </button>
 
+    <!-- Admin Password Modal -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-modal-content">
+            <h3>管理员登录</h3>
+            <input type="password" id="adminPassword" placeholder="请输入管理员密码">
+            <p class="error-msg" id="adminError">密码错误，请重试</p>
+            <div class="admin-modal-buttons">
+                <button class="cancel-btn" id="adminCancel">取消</button>
+                <button class="confirm-btn" id="adminConfirm">确认</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Product Detail Modal -->
     <div class="modal" id="productModal">
         <div class="modal-content">
@@ -2008,8 +2127,27 @@
             e.preventDefault();
             const formData = new FormData(this);
             const name = formData.get('name');
+            const phone = formData.get('phone');
             const date = formData.get('date');
             const time = formData.get('time');
+            const tea = formData.get('tea');
+            const message = formData.get('message');
+
+            // Save to localStorage
+            const reservations = JSON.parse(localStorage.getItem('yunqiReservations') || '[]');
+            const newReservation = {
+                id: Date.now().toString(),
+                name: name,
+                phone: phone,
+                date: date,
+                time: time,
+                tea: tea,
+                message: message,
+                submitTime: new Date().toLocaleString('zh-CN'),
+                status: 'pending'
+            };
+            reservations.push(newReservation);
+            localStorage.setItem('yunqiReservations', JSON.stringify(reservations));
 
             this.style.display = 'none';
             document.querySelector('.form-success').style.display = 'block';
@@ -2067,6 +2205,45 @@
         const today = new Date().toISOString().split('T')[0];
         dateInput.min = today;
         dateInput.value = today;
+
+        // Admin Login
+        const adminBtn = document.getElementById('adminBtn');
+        const adminModal = document.getElementById('adminModal');
+        const adminPassword = document.getElementById('adminPassword');
+        const adminError = document.getElementById('adminError');
+        const adminCancel = document.getElementById('adminCancel');
+        const adminConfirm = document.getElementById('adminConfirm');
+
+        adminBtn.addEventListener('click', () => {
+            adminModal.classList.add('active');
+            adminPassword.value = '';
+            adminError.style.display = 'none';
+        });
+
+        adminCancel.addEventListener('click', () => {
+            adminModal.classList.remove('active');
+        });
+
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                adminModal.classList.remove('active');
+            }
+        });
+
+        adminConfirm.addEventListener('click', () => {
+            if (adminPassword.value === '060508') {
+                window.location.href = 'admin.html';
+            } else {
+                adminError.style.display = 'block';
+                adminPassword.value = '';
+            }
+        });
+
+        adminPassword.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                adminConfirm.click();
+            }
+        });
     </script>
 </body>
 </html>
