@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- 预加载关键图片 -->
+    <link rel="preload" href="images/logo.png" as="image">
+    <link rel="preload" href="images/tea1.png" as="image">
     <style>
         :root {
             --color-primary: #5B7C6F;
@@ -1550,7 +1553,7 @@
         <div class="about-content">
             <div class="about-image fade-in-left">
                 <div class="about-image-inner">
-                    <img src="images/logo.png" alt="云栖茶语">
+                    <img src="images/logo.png" alt="云栖茶语" loading="lazy">
                     <div class="overlay">
                         <div class="main-text">云栖茶语</div>
                         <div class="sub-text">YUN QI CHA YU</div>
@@ -1594,39 +1597,39 @@
         <div class="products-grid">
             <div class="product-card fade-in">
                 <div class="product-tag">招牌</div>
-                <div class="product-image"><img src="images/tea1.png" alt="云雾龙井"></div>
+                <div class="product-image"><img src="images/tea1.png" alt="云雾龙井" loading="lazy"></div>
                 <h4>云雾龙井</h4>
                 <p class="product-desc">西湖龙井 · 清香淡雅</p>
                 <span class="price">¥28</span>
             </div>
             <div class="product-card fade-in">
                 <div class="product-tag">推荐</div>
-                <div class="product-image"><img src="images/tea2.png" alt="栖心白茶"></div>
+                <div class="product-image"><img src="images/tea2.png" alt="栖心白茶" loading="lazy"></div>
                 <h4>栖心白茶</h4>
                 <p class="product-desc">福鼎白茶 · 甘甜醇厚</p>
                 <span class="price">¥32</span>
             </div>
             <div class="product-card fade-in">
-                <div class="product-image"><img src="images/tea3.png" alt="茶语乌龙"></div>
+                <div class="product-image"><img src="images/tea3.png" alt="茶语乌龙" loading="lazy"></div>
                 <h4>茶语乌龙</h4>
                 <p class="product-desc">安溪铁观音 · 兰香馥郁</p>
                 <span class="price">¥26</span>
             </div>
             <div class="product-card fade-in">
-                <div class="product-image"><img src="images/tea4.png" alt="山岚茉莉"></div>
+                <div class="product-image"><img src="images/tea4.png" alt="山岚茉莉" loading="lazy"></div>
                 <h4>山岚茉莉</h4>
                 <p class="product-desc">茉莉花茶 · 清新怡人</p>
                 <span class="price">¥24</span>
             </div>
             <div class="product-card fade-in">
-                <div class="product-image"><img src="images/tea5.png" alt="竹影绿茶"></div>
+                <div class="product-image"><img src="images/tea5.png" alt="竹影绿茶" loading="lazy"></div>
                 <h4>竹影绿茶</h4>
                 <p class="product-desc">碧螺春 · 鲜爽回甘</p>
                 <span class="price">¥28</span>
             </div>
             <div class="product-card fade-in">
                 <div class="product-tag">新品</div>
-                <div class="product-image"><img src="images/tea6.png" alt="暮云红茶"></div>
+                <div class="product-image"><img src="images/tea6.png" alt="暮云红茶" loading="lazy"></div>
                 <h4>暮云红茶</h4>
                 <p class="product-desc">正山小种 · 蜜香悠长</p>
                 <span class="price">¥30</span>
@@ -1674,7 +1677,7 @@
         </div>
         <div class="store-showcase">
             <div class="store-main fade-in-left">
-                <img src="images/store.png" alt="门店空间">
+                <img src="images/store.png" alt="门店空间" loading="lazy">
             </div>
             <div class="store-info">
                 <div class="store-card fade-in-right">
